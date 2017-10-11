@@ -13,4 +13,4 @@
 
 Route::get('/', 'BMIController@index');
 
-Route::get('/results','BMIController@checkform);
+Route::get('/results','BMIController@checkform');
