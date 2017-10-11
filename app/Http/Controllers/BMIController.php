@@ -8,11 +8,11 @@ class BMIController extends Controller
 {
     public function index()
 	{
-		return 'Show form to collect data from user'
+		return 'Show form to collect data from user';
 	}
 	public function checkform()
 	{
-		return 'Process form'
+		return 'Process form';
 		//redirect to results
 	}
 }
