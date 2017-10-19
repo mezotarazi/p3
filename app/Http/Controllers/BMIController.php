@@ -10,9 +10,13 @@ class BMIController extends Controller
 	{
 		return 'Show form to collect data from user';
 	}
-	public function checkform()
+	public function results($output = null)
 	{
-		return 'Process form';
+		return view('results')->with(['output' =>$output]);
 		//redirect to results
 	}
+	public function show($results = null)
+{
+    return view('show');
+}
 }

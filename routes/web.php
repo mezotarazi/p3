@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', 'BMIController@index');
+Route::get('/', 'BMIController@show');
 
-Route::get('/results','BMIController@checkform');
+Route::get('/results','BMIController@results');
+
+
+Route::get('/env', function () {
+    dump(config('app.name'));
+    dump(config('app.env'));
+    dump(config('app.debug'));
+    dump(config('app.url'));
+});
