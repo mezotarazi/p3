@@ -11,6 +11,7 @@
 @endsection
 @section('content')
     <h1>----------------------------Content / Form Area-------------------------</h1>
+    <a href="http://p3.rameztarazi.me/results">Go To Results Page</a>
 @endsection
 
 @section('footer')

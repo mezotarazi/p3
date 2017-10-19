@@ -11,6 +11,7 @@
 @endsection
 @section('content')
     <h1>--------------------Results of Resting Metabolic Rate (RMR) Calculator-----------------</h1>
+    <a href="http://p3.rameztarazi.me/results">Go To Home Page</a>
 @endsection
 
 @section('footer')
