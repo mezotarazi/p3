@@ -9,6 +9,12 @@
     <p>This Calculator is based on Mifflin St. Jeor Algorithm to derive calorie requirement per day</p>
 @endsection
 @section('content')
+    @php ($activity_array = array('1.0' => 'Minimal','1.2' => 'Inactive','1.376' => 'Light', '1.55' => 'Moderate','1.725' => 'Heavy', '1.9' => 'Athlete'))
+    @php ($height_array = array('55' => '4ft 7in','56' => '4 ft. 8 in.','57' => '4 ft. 9 in.','58' => '4 ft. 10 in.','59' => '4 ft. 11 in.','60' => '5 ft. 0 in.','61' => '5 ft. 1 in.','62' => '5 ft. 2 in.',
+    '63' => '5 ft. 3 in.','64' => '5 ft. 4 in.','65' => '5 ft. 5 in.','66' => '5 ft. 6 in.','67' => '5 ft. 7 in.','68' => '5 ft. 8 in.','69' => '5 ft. 9 in.','70' => '5 ft. 10 in.','71' => '5 ft. 11 in.',
+    '72' => '6 ft. 0 in.','73' => '6 ft. 1 in.','74' => '6 ft. 2 in.','75' => '6 ft. 3 in.','76' => '6 ft. 4 in.','77' => '6 ft. 5 in.','78' => '6 ft. 6 in.','79' => '6 ft. 7 in.','80' => '6 ft. 8 in.',
+    '81' => '6 ft. 9 in.','82' => '6 ft. 10 in.','83' => '6 ft. 11 in.','84' => '7 ft. 0 in.')
+    )
     <div class="container">
 
         <div class="jumbotron">
@@ -37,49 +43,23 @@
                             <tr>
                                 <td class="col1"><label for="age">Age</label></td>
                                 <td>
-                                    <input type="text" name="age"  id="age" style="width:60px;" maxlength="3" value="">
+                                    <input type="text" name="age"  id="age" style="width:60px;" maxlength="3" value='{{ old('age') }}'>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td class="col1"><label for="weight">Weight</label></td>
-                                <td><input type="text" name="weight"  id="weight" placeholder="lbs" style="width:60px;" maxlength="3" value=""></td>
+                                <td><input type="text" name="weight"  id="weight" placeholder="lbs" style="width:60px;" maxlength="3" value='{{ old('weight') }}'></td>
                             </tr>
 
                             <tr>
                                 <td class="col1"><label for="height">Height</label></td>
                                 <td>
-                                    <select name="height"  id="height" style="width:100px;">
-                                        <option value="55">4ft 7in</option>
-                                        <option value="56">4ft 8in</option>
-                                        <option value="57">4ft 9in</option>
-                                        <option value="58">4ft 10in</option>
-                                        <option value="59">4ft 11in</option>
-                                        <option value="60">5ft 0in</option>
-                                        <option value="61">5ft 1in</option>
-                                        <option value="62">5ft 2in</option>
-                                        <option value="63">5ft 3in</option>
-                                        <option value="64">5ft 4in</option>
-                                        <option value="65">5ft 5in</option>
-                                        <option value="66">5ft 6in</option>
-                                        <option value="67">5ft 7in</option>
-                                        <option value="68">5ft 8in</option>
-                                        <option value="69">5ft 9in</option>
-                                        <option value="70" selected>5ft 10in</option>
-                                        <option value="71">5ft 11in</option>
-                                        <option value="72">6ft 0in</option>
-                                        <option value="73">6ft 1in</option>
-                                        <option value="74">6ft 2in</option>
-                                        <option value="75">6ft 3in</option>
-                                        <option value="76">6ft 4in</option>
-                                        <option value="77">6ft 5in</option>
-                                        <option value="78">6ft 6in</option>
-                                        <option value="79">6ft 7in</option>
-                                        <option value="80">6ft 8in</option>
-                                        <option value="81">6ft 9in</option>
-                                        <option value="82">6ft 10in</option>
-                                        <option value="83">6ft 11in</option>
-                                        <option value="84">7ft 0in</option>
+                                    <select name="height">
+                                        <option value="">Select</option>
+                                        @foreach($height_array as $type => $value))
+                                            <option value="{{ $type }}" {{ (old('height', $height_array ?? '') == $type) ? 'selected' : '' }}>{{ $value }}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                             </tr>
@@ -87,12 +67,11 @@
                             <tr>
                                 <td class="col1">Activity</td>
                                 <td>
-                                    <select name="activity"  style="width:200px;">
-                                        <option value="1.2" selected>Inactive</option>
-                                        <option value="1.375">Light Exercise (1-2 days/week)</option>
-                                        <option value="1.55">Moderate Exercise (3-5 days/week)</option>
-                                        <option value="1.725">Heavy Exercise (6-7 days/week)</option>
-                                        <option value="1.9">Athlete (2x per day) </option>
+                                    <select name="activity">
+                                        <option value="">Select</option>
+                                        @foreach($activity_array as $type => $value)
+                                            <option value="{{ $type }}" {{ (old('activity', $activity_array ?? '') == $type) ? 'selected' : '' }}>{{ $value }}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                             </tr>
