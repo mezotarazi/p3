@@ -5,8 +5,6 @@
 @endsection
 
 @section('header')
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
     <h2>Resting Metabolic Rate (RMR) Calculator</h2>
     <p>This Calculator is based on Mifflin St. Jeor Algorithm to calculate Calorie intake</p>
 @endsection

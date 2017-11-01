@@ -4,6 +4,8 @@
     <title>
         @yield('title','BMI Calcualtor')
     </title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset='utf-8'>
 </head>
 <body>

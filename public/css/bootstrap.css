@@ -9,6 +9,18 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  text-align: center;
+}
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+}
 body {
   margin: 0;
 }
