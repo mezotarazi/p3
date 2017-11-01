@@ -12,12 +12,10 @@
 
     @php ($activity_array = array('1.0' => 'Minimal','1.2' => 'Inactive','1.376' => 'Light', '1.55' => 'Moderate','1.725' => 'Heavy', '1.9' => 'Athlete'))
     @php ($calories = Mifflin($_GET['measure'],$_GET['gender'],$_GET['weight'],$_GET['height'],$_GET['age'],$_GET['activity']))
-
     @php ($BMI = round(BMI($_GET['measure'],$_GET['weight'],$_GET['height']),2))
 
 
     <div class="container">
-
         <div class="jumbotron">
             <div class="result">
                    <p>You are a <strong>{{ app('request')->input('age') }}</strong> year old
@@ -28,6 +26,7 @@
                        while doing <strong>{{ $activity_array[app('request')->input('activity')] }}</strong> activity per week
                    </p>
 
+                    <!-- maintenance calorie section -->
                     <div class="row">
                         <div class="col-sm-4" style="padding-left:0;">
                             <p class="bold text-center">Your Maintenance Calories</p>
@@ -46,35 +45,31 @@
                             </div>
                         </div>
 
-
-
+                    <!-- calorie right side table -->
                     <div class="col-sm-8" style="padding-top:60px;">
 
                         <table class="table table-condensed" id="bmr-table" style="margin-bottom:10px;">
-                            <?php
-                            foreach ($activity_array as $key => &$val){
-                                if ($calories == Mifflin($_GET['measure'],$_GET['gender'],$_GET['weight'],$_GET['height'],$_GET['age'], $key)) {
-                                    echo '<tr class="success2"><td>' . $val . '</td>';
-                                }
-                                else echo '<tr><td>' . $val . '</td>';
-                                echo'<td>'.Mifflin($_GET['measure'],$_GET['gender'],$_GET['weight'],$_GET['height'],$_GET['age'], $key).'<small> calories per day </small></td></tr>';
-                            }
-                            ?>
+                            @foreach ($activity_array as $key => &$val)
+                                @if ($calories == Mifflin($_GET['measure'],$_GET['gender'],$_GET['weight'],$_GET['height'],$_GET['age'], $key))
+                                    <tr class="success2"><td>{{$val }}</td><td>{{$calories}}<small> calories per day </small></td>
+                                @else <tr><td>{{$val }}</td>
+                                    <td>{{Mifflin($_GET['measure'],$_GET['gender'],$_GET['weight'],$_GET['height'],$_GET['age'], $key)}} <small> calories per day </small></td></tr>
+                                @endif
+                            @endforeach
                         </table>
                     </div> <!-- end col-sm-8 -->
                     </div>
-                    </br>
+                    <br>
 
+                    <!-- weight bottom left side table -->
                     <div class="row">
-
                         <div class="col-sm-6" style="padding-left:0;">
-
                             <h2>Your Weight:
                                 {{ app('request')->input('weight')}} lbs
                             </h2>
                             <p>Your ideal body weight should be between:
-                                <?php echo round(BMI_Assess($_GET['measure'],$_GET['height'],0),0);
-                                echo " - ".round(BMI_Assess($_GET['measure'],$_GET['height'],1),0);?>
+                                {{ round(BMI_Assess($_GET['measure'],$_GET['height'],0),0)}}
+                                 - {{round(BMI_Assess($_GET['measure'],$_GET['height'],1),0)}}
                                 lbs
                             </p>
                         </div>
