@@ -94,13 +94,13 @@
    <a href="http://p3.rameztarazi.me/">Go To Home Page</a>
 @endsection
 @section('footer')
-   </div><!-- #main -->
-   <h6>All rights reserved</h6>
-   <footer id="colophon" class="site-footer" role="contentinfo">
 
-       <div class="site-info">
-           <a href="http://p3.rameztarazi.me">p3.rameztarazi.me</a>
-       </div><!-- .site-info -->
-   </footer><!-- #colophon -->
-   </div><!-- #page -->
+   <h6>All rights reserved</h6>
+       <footer >
+
+           <div class="site-info">
+               <a href="http://p3.rameztarazi.me">p3.rameztarazi.me</a>
+           </div><!-- .site-info -->
+       </footer><!-- #colophon -->
+
 @endsection
