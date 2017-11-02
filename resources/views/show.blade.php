@@ -35,8 +35,8 @@
                             <tr>
                                 <td class="col1">Gender</td>
                                 <td>
-                                    <label><input type="radio" name="gender" id="male" value="male" checked> Male&nbsp;</label>
-                                    <label><input type="radio" name="gender" id="female" value="female"> Female</label>
+                                    {{ Form::radio('gender', 'M', (Input::old('gender') == 'M'), array('id'=>'male', 'class'=>'radio')) }}
+                                    {{ Form::radio('gender', 'F', (Input::old('gender') == 'F'), array('id'=>'female', 'class'=>'radio')) }}
                                 </td>
                             </tr>
 
